@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九游 · 一处安静的起点</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f9f8f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.8;
+      color: #2e2a24;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.4rem 1.2rem 3.6rem;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 680px;
+      width: 100%;
+    }
+
+    /* 开场 */
+    .opening {
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .opening p:first-child {
+      font-size: 1.6rem;
+      font-weight: 350;
+      letter-spacing: 0.02em;
+      color: #383530;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      border-left: 3px solid #c0b3a0;
+      padding-left: 1.2rem;
+    }
+
+    .opening p {
+      font-size: 1rem;
+      color: #4f4a44;
+    }
+
+    /* 承接段落 */
+    .bridge {
+      margin-bottom: 2.8rem;
+    }
+
+    .bridge p {
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .bridge p:last-child {
+      margin-bottom: 0;
+    }
+
+    .quiet-link {
+      color: #8b7b67;
+      text-decoration: none;
+      border-bottom: 1px solid #cec1b0;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .quiet-link:hover {
+      color: #5f4f3d;
+      border-bottom-color: #5f4f3d;
+    }
+
+    /* 特点列表 */
+    .traits {
+      margin: 3rem 0 2.8rem;
+    }
+
+    .traits h2 {
+      font-size: 1.2rem;
+      font-weight: 450;
+      letter-spacing: 0.06em;
+      color: #4f4a44;
+      margin-bottom: 1.6rem;
+      border-bottom: 1px solid #d9d0c3;
+      padding-bottom: 0.4rem;
+      display: inline-block;
+    }
+
+    .traits-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .traits-list li {
+      position: relative;
+      padding: 0.9rem 0 0.9rem 2.2rem;
+      border-bottom: 1px solid #ede8df;
+      font-size: 0.98rem;
+      color: #3f3a34;
+    }
+
+    .traits-list li:last-child {
+      border-bottom: none;
+    }
+
+    .traits-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0.9rem;
+      color: #b7aa99;
+      font-weight: 600;
+      font-size: 1.4rem;
+      line-height: 1.2;
+    }
+
+    /* 温和结尾 */
+    .gentle-end {
+      margin-top: 2.4rem;
+      padding: 1.6rem 1.2rem;
+      background: rgba(235, 228, 217, 0.3);
+      border-radius: 16px;
+    }
+
+    .gentle-end p {
+      font-size: 0.95rem;
+      color: #4e4943;
+      margin-bottom: 0.6rem;
+    }
+
+    .gentle-end p:last-of-type {
+      margin-bottom: 0.6rem;
+    }
+
+    .gentle-end .small-note {
+      font-size: 0.85rem;
+      color: #7a7269;
+      margin-top: 0.8rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e1d9ce;
+      margin: 2.2rem 0 1rem;
+      width: 100%;
+    }
+
+    .footer-meta {
+      font-size: 0.8rem;
+      color: #9b9288;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 480px) {
+      body {
+        padding: 1.6rem 0.8rem 2.4rem;
+      }
+
+      .opening p:first-child {
+        font-size: 1.3rem;
+        padding-left: 1rem;
+      }
+
+      .traits-list li {
+        padding-left: 1.8rem;
+      }
+
+      .traits-list li::before {
+        left: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 开场短句 -->
+    <div class="opening">
+      <p>有些站点，不需要喧闹的标语。它只是安静地存在着，等你推开一扇门。</p>
+      <p>这扇门后，是「九游」。一个从最初就专注于整合信息与实用入口的地方，没有浮夸的承诺，只有经年累月的打磨和朴素的信任。</p>
+    </div>
+
+    <!-- 承接段落：站点介绍与可信说明 -->
+    <div class="bridge">
+      <p>
+        我最初注意到 <a href="https://web-ninegames.com.cn" class="quiet-link">九游</a>，是因为它的干净与克制。在如今许多站点急不可耐地收集注意力时，九游却选择把空间留给内容本身。它给我的感觉更像一座小庭院：格局清晰，路径分明，你走进去不必左顾右盼，就能找到自己关心的那块角落。
+      </p>
+      <p>
+        就一个信息类网站而言，可信度往往建立在两点上：一是来源是否可靠，二是维护者是否持续用心。九游在这两方面都算得上踏实——它的更新步伐稳定，所整合的内容大多能溯源到公开且规范的渠道。没有刻意渲染的噱头，也没有突然弹出的干扰性元素。正是这种不打扰的态度，让它慢慢沉淀出一批愿意反复回来的使用者。
+      </p>
+      <p>
+        当然，任何一个站点都无法做到百分之百完美，九游也不例外。偶尔某些外部链接会因为合作方调整而暂时失效，但站内的基础结构和主要导航始终保持清晰。团队也会在页面中补充必要的提示，这种坦诚反而加深了信任。
+      </p>
+    </div>
+
+    <!-- 特点列表 -->
+    <div class="traits">
+      <h2>它吸引人的几个细节</h2>
+      <ul class="traits-list">
+        <li><strong>布局克制</strong> —— 没有满屏的横幅和弹窗，每一页都优先展示有效信息，阅读体验安静而连贯。</li>
+        <li><strong>内容分类有层次</strong> —— 从概览到细分条目，层级分明，不会让你在多层跳转中迷失。</li>
+        <li><strong>风格稳定一致</strong> —— 配色、字体、间距都遵循同一套视觉语言，不因页面不同而跳跃，降低认知负担。</li>
+        <li><strong>面向长期使用</strong> —— 九游的迭代往往是小步式的优化而非颠覆性变动，老用户不必反复适应新界面。</li>
+      </ul>
+    </div>
+
+    <!-- 温和结尾 + FAQ 摘要风格 -->
+    <div class="gentle-end">
+      <p>有时候，一个好的站点就像一间安静的咖啡馆：你不需要它的灯光来提醒你“这里很棒”，你只需要知道它一直都在，而当你需要的时候，拐过街角就能看到它。</p>
+      <p>九游给我的感觉正是如此。如果你也偏爱那种不喧哗、不追赶、留有余地的网络空间，不妨在合适的午后，给自己一点时间，慢慢走进 <a href="https://web-ninegames.com.cn" class="quiet-link">九游</a> 看看。</p>
+      <p class="small-note">—— 常见的小问题：是否收费？九游所有基础浏览和功能均免费，无需注册即可使用大部分内容。内容是否会过时？维护者会定期检查并更新失效信息，同时保留归档说明。无需担心，每一次打开都大致整洁如初。</p>
+    </div>
+
+    <hr>
+
+    <div class="footer-meta">
+      九游 · 一个不起眼但值得停留的角落
+    </div>
+
+  </div>
+</body>
+</html>
