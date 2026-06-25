@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>看球吧 — 知识库入口 · 信息型首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f5f9fc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1a2b3c;
+            line-height: 1.6;
+            padding: 20px 16px 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page-wrapper {
+            max-width: 1120px;
+            width: 100%;
+        }
+
+        /* hero 区 */
+        .hero {
+            background: linear-gradient(145deg, #e9f3f9, #d4e6f0);
+            border-radius: 32px 32px 24px 24px;
+            padding: 32px 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 6px 14px rgba(0, 30, 40, 0.04);
+            border-left: 6px solid #1f9a8e;
+        }
+        .hero h1 {
+            font-size: 2.0rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            color: #0f3b44;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .hero h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #3c6b77;
+            background: rgba(31, 154, 142, 0.10);
+            padding: 2px 12px;
+            border-radius: 40px;
+        }
+        .hero p {
+            max-width: 720px;
+            font-size: 1.02rem;
+            color: #1e4b57;
+            margin-top: 6px;
+        }
+
+        /* 网格卡片 — 目录 & 信息区 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin: 28px 0 32px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 20px 18px 22px;
+            box-shadow: 0 4px 10px rgba(0, 40, 50, 0.04);
+            border: 1px solid #e3edf2;
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 18px rgba(0, 55, 70, 0.06);
+            transform: translateY(-3px);
+            border-color: #b9d5de;
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f4a4f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card h3 .icon {
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+        .card p, .card ul {
+            font-size: 0.92rem;
+            color: #2c4b55;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card li {
+            padding: 4px 0;
+            border-bottom: 1px dashed #ddecf2;
+            display: flex;
+            gap: 6px;
+        }
+        .card li:last-child {
+            border-bottom: none;
+        }
+        .card li::before {
+            content: "•";
+            color: #1f9a8e;
+            font-weight: bold;
+        }
+        .badge {
+            display: inline-block;
+            background: #d3f0ec;
+            color: #0b5c5a;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 1px 10px;
+            border-radius: 30px;
+            letter-spacing: 0.02em;
+            margin-left: 6px;
+        }
+
+        /* 说明框 / 提示区 */
+        .info-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 20px 0 28px;
+        }
+        .panel-box {
+            flex: 1 1 200px;
+            background: #f0f7fa;
+            border-radius: 20px;
+            padding: 16px 18px;
+            border-left: 4px solid #1f9a8e;
+        }
+        .panel-box h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #09444c;
+            margin-bottom: 6px;
+        }
+        .panel-box p {
+            font-size: 0.9rem;
+            color: #1d4d57;
+        }
+        .panel-box .highlight {
+            color: #11776b;
+            font-weight: 500;
+        }
+
+        /* 内容句子中的链接 — 自然嵌入 */
+        .inline-link-wrap {
+            background: #edf5f8;
+            border-radius: 60px;
+            padding: 12px 22px;
+            margin: 24px 0 28px;
+            display: inline-block;
+            font-size: 0.98rem;
+            border: 1px solid #cae0e7;
+        }
+        a {
+            color: #007a6e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b2d5d0;
+            transition: color 0.1s, border-color 0.1s;
+        }
+        a:hover {
+            color: #014e46;
+            border-bottom-color: #014e46;
+        }
+
+        /* FAQ 摘要卡片 */
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 18px 22px 20px;
+            margin: 20px 0 20px;
+            box-shadow: 0 2px 10px rgba(0, 40, 50, 0.02);
+            border: 1px solid #ddecf2;
+        }
+        .faq-mini h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0c474e;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .faq-item {
+            display: flex;
+            padding: 6px 0;
+            font-size: 0.92rem;
+            border-bottom: 1px solid #ecf4f7;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 500;
+            color: #195660;
+            min-width: 90px;
+        }
+        .faq-a {
+            color: #2b5c66;
+        }
+        .faq-a a {
+            font-weight: 400;
+            border-bottom: none;
+            color: #00786b;
+        }
+
+        /* 相关区域 */
+        .related-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 24px 0 12px;
+        }
+        .related-item {
+            background: #eef6f9;
+            border-radius: 16px;
+            padding: 10px 14px;
+            font-size: 0.88rem;
+            color: #1f5761;
+            border: 1px solid #d6e7ee;
+        }
+        .related-item strong {
+            color: #0a5952;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 600px) {
+            body {
+                padding: 16px 12px 40px;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero {
+                padding: 24px 18px;
+            }
+            .grid-cards {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            .faq-mini {
+                padding: 14px 16px;
+            }
+            .inline-link-wrap {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 380px) {
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+            .panel-box {
+                flex: 1 1 100%;
+            }
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #d2e4eb;
+            margin: 28px 0 6px;
+        }
+        .footnote {
+            font-size: 0.8rem;
+            color: #517d87;
+            margin-top: 30px;
+            border-top: 1px solid #d7e9ef;
+            padding-top: 16px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- hero 区：从用途快速识别切入 -->
+    <div class="hero">
+        <h1>
+            看球吧
+            <small>知识库·目录入口</small>
+        </h1>
+        <p>面向希望快速判断网站定位的用户：这里聚合赛事相关索引、常见问题与场景说明，帮助你在信息层建立整体认知。无需跳转即可了解核心脉络。</p>
+    </div>
+
+    <!-- 网格卡片：目录感布局 -->
+    <div class="grid-cards">
+        <div class="card">
+            <h3><span class="icon">📋</span> 快速导航</h3>
+            <ul>
+                <li>赛事分类与索引说明</li>
+                <li>常用查询路径</li>
+                <li>内容结构概览</li>
+                <li>更新节奏简述</li>
+            </ul>
+            <div style="margin-top: 8px;"><span class="badge">结构索引</span></div>
+        </div>
+        <div class="card">
+            <h3><span class="icon">🔍</span> 定位说明</h3>
+            <p>本网站并非单一直播间或论坛，而是围绕体育信息聚合的知识型入口。你可以把它理解为一个轻量级目录：从联赛、球队到观赛指南，按逻辑组织。</p>
+        </div>
+        <div class="card">
+            <h3><span class="icon">🧭</span> 使用场景</h3>
+            <ul>
+                <li>快速确认某赛事是否覆盖</li>
+                <li>查找观赛基础知识</li>
+                <li>了解常见名词与规则简述</li>
+                <li>获取频道或时间相关提示</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3><span class="icon">⚙️</span> 信息特点</h3>
+            <p>内容以中性、准确为原则，不包含主观预测或诱导性表述。条目式呈现，减少无关干扰，适合需要快速检索的用户。</p>
+        </div>
+    </div>
+
+    <!-- 说明区 + 提示区 (面板) -->
+    <div class="info-panel">
+        <div class="panel-box">
+            <h4>📌 说明</h4>
+            <p>网站内容由多个信息模块构成，<span class="highlight">不直接提供直播流或外部播放源</span>，而是作为索引与知识参考。所有条目均标注来源类型，方便核查。</p>
+        </div>
+        <div class="panel-box">
+            <h4>💡 提示</h4>
+            <p>初次使用建议先浏览分类总览，再进入具体条目。部分信息页带有注释与关联阅读，可辅助理解上下文。建议搭配桌面端或平板获得更完整的目录视图。</p>
+        </div>
+        <div class="panel-box">
+            <h4>📎 相关信息</h4>
+            <p>每季度更新联赛对照表，并补充规则变化摘要。历史数据归档于独立子页面，可通过站内链接回溯。反馈通道见页面底部。</p>
+        </div>
+    </div>
+
+    <!-- 自然嵌入链接的句子 a 标签（可见文本严格等于「看球吧」） -->
+    <div class="inline-link-wrap">
+        📘 如果你希望直接进入信息主站，可以通过
+        <a href="https://main-kanqiu8.com">看球吧</a>
+        浏览完整索引页面。站内结构按联赛、球队、术语、常见问题分区，方便横向对比。
+    </div>
+
+    <!-- FAQ 摘要区 -->
+    <div class="faq-mini">
+        <h4>❓ 常见问题摘要</h4>
+        <div class="faq-item">
+            <span class="faq-q">覆盖哪些赛事？</span>
+            <span class="faq-a">欧洲主要联赛、杯赛及国际赛事，部分亚洲联赛。具体列表可在 <a href="https://main-kanqiu8.com">看球吧</a> 索引页中查看「赛事分类」。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">信息更新频率？</span>
+            <span class="faq-a">赛季期间每轮更新，休赛期保持月度维护。重要规则变动会额外补充说明。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">是否包含历史数据？</span>
+            <span class="faq-a">近三个赛季的对照表与简史可查，更早记录以归档形式存放。</span>
+        </div>
+    </div>
+
+    <!-- 相关区域：相关信息区 -->
+    <div class="related-grid">
+        <div class="related-item"><strong>📂 术语表</strong> — 常用足球/篮球术语释义，便于新读者快速对齐概念。</div>
+        <div class="related-item"><strong>📅 赛季日历</strong> — 主要赛事时间区间与关键节点，辅助规划关注周期。</div>
+        <div class="related-item"><strong>🏷️ 球队索引</strong> — 按联赛分组的球队名录，附基础信息与主场名称。</div>
+        <div class="related-item"><strong>📖 阅读指引</strong> — 针对不同需求（速查、深度了解）推荐浏览路径。</div>
+    </div>
+
+    <hr>
+    <div class="footnote">
+        此页面为信息型入口索引，内容以知识梳理为导向。更多模块持续补充中。
+    </div>
+
+</div>
+</body>
+</html>
